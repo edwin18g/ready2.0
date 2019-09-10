@@ -46,12 +46,32 @@
 
     <access origin="*" />
 
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
+   
+<!-- Allow links to web pages to open in a browser -->
+<allow-intent href="http://*/*" />
+<allow-intent href="https://*/*" />
+
+<!-- Allow links to example.com to open in a browser -->
+<allow-intent href="http://readycash.co.in/*" />
+
+<!-- Wildcards are allowed for the protocol, as a prefix
+     to the host, or as a suffix to the path -->
+<allow-intent href="*://*.readycash.co.in/*" />
+
+<!-- Allow SMS links to open messaging app -->
+<allow-intent href="sms:*" />
+
+<!-- Allow tel: links to open the dialer -->
+<allow-intent href="tel:*" />
+
+<!-- Allow geo: links to open maps -->
+<allow-intent href="geo:*" />
+
+<!-- Allow all unrecognized URLs to open installed apps
+     *NOT RECOMMENDED* -->
+<allow-intent href="*" />
+
+
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
