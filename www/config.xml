@@ -70,6 +70,19 @@
 <!-- Allow all unrecognized URLs to open installed apps
      *NOT RECOMMENDED* -->
 <allow-intent href="*" />
+<!-- Allow links to example.com -->
+<allow-navigation href="http://readycash.co.in/*" />
+
+<!-- Wildcards are allowed for the protocol, as a prefix
+     to the host, or as a suffix to the path -->
+<allow-navigation href="*://*.readycash.co.in/*" />
+
+<!-- A wildcard can be used to whitelist the entire network,
+     over HTTP and HTTPS.
+     *NOT RECOMMENDED* -->
+<allow-navigation href="*" />
+
+<!-- The above is equivalent to these three declarations -->
 
 
     <platform name="android">
