@@ -34,36 +34,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		window.plugins.PushbotsPlugin.initialize("PUSHBOTS_APPLICATION_ID", {"android":{"sender_id":"GOOGLE_SENDER_ID"}});
-		
-		// Only with First time registration
-		window.plugins.PushbotsPlugin.on("registered", function(token){
-			console.log("Registration Id:" + token);
-		});
 
-		//Get user registrationId/token and userId on PushBots, with evey launch of the app even launching with notification
-		window.plugins.PushbotsPlugin.on("user:ids", function(data){
-			console.log("user:ids" + JSON.stringify(data));
-		});
-		
-		
-		// Should be called once app receive the notification [foreground/background]
-		window.plugins.PushbotsPlugin.on("notification:received", function(data){
-			console.log("received:" + JSON.stringify(data));
-	
-			//iOS: [foreground/background]
-			console.log("notification received from:" + data.cordova_source);
-			//Silent notifications Only [iOS only]
-			//Send CompletionHandler signal with PushBots notification Id
-			window.plugins.PushbotsPlugin.done(data.pb_n_id);
-		});
-
-		window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-			// var userToken = data.token; 
-		       // var userId = data.userId;
-		  	console.log("clicked:" + JSON.stringify(data));
-		});
-		
+        app.addIframe();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -75,5 +47,20 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+
+    addIframe : function () {
+        i = document.createElement("iframe");
+
+        i.src = "https://example.org";
+        i.addEventListener('load', this.iframeLoaded, false);
+
+        document.body.appendChild(i);
+    },
+
+    iframeLoaded : function (e) {
+        console.log("iFrame loaded at\n" + e.currentTarget.contentWindow.location.href);
     }
 };
+
+app.initialize();
