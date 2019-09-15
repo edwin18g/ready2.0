@@ -19,6 +19,8 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        console.log('test');
+        app.addIframe();
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -33,8 +35,9 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.addIframe();
-        app.receivedEvent('deviceready');
+        
+        app.receivedEvent('deviceready');app.addIframe();
+
 
       
     },
